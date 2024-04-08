@@ -22,7 +22,10 @@ const forecast = (lat, long, callback) => {
         } else if (body.error) {
             callback('Location not found', undefined)
         } else {
-            const message = body.current.condition.text + ': It is currently ' + body.current.temp_f + ' degrees out.  It feels like ' + body.current.feelslike_f + ' degrees.'
+            const conditions = 'Conditions are ' + body.current.condition.text + '. '
+            const temperature = 'It is currently ' + body.current.temp_f + ' degrees out.  It feels like ' + body.current.feelslike_f + ' degrees. '
+            const moreWeather = 'The humidity is ' + body.current.humidity + '% with ' + body.current.cloud + '% cloud cover.'
+            const message =  conditions + temperature + moreWeather
             callback(undefined, message)
         }
     })
